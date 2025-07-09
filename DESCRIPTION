@@ -1,0 +1,10 @@
+Package: dfmtbx
+Title: Tools for DFM data analysis
+Version: 0.1.0
+Authors@R: 
+    person("Carlos", "Rodriguez", , "carlos.i.rodriguez@cuanschutz.edu", role = c("aut", "cre"))
+Description: A collection of custom written R functions and utilities for working with research data.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.0.0
