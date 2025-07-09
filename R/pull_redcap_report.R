@@ -1,7 +1,8 @@
 #' pull_redcap_report
 #'
 #' Pulls a report from a RedCap project given a project token, report id, and a
-#' value type.
+#' value type. Requires a pre-defined set of fields specified in a RedCap
+#' project and API access to the RedCap project.
 #'
 #' @param token A RedCap API token as a string corresponding to the RedCap 
 #'  project of interest. The token can be saved as an environmental variable
