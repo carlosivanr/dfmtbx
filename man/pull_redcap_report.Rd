@@ -36,6 +36,6 @@ project and API access to the RedCap project.
 # Basic example usage
 data <- pull_redcap_report(Sys.getenv("LC_patient"), "81729739", "label")
  where "LC_patient" is a Windows environmental variable containing the 
- RedCap project API.
+ RedCap project API token.
 
 }

@@ -2,4 +2,5 @@
 
 export(get_fx_sz_tbl)
 export(pull_redcap_report)
+export(score_ic_scale)
 export(score_pc_scale)
