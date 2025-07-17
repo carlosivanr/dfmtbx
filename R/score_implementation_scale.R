@@ -1,62 +1,50 @@
-# Score Implementation Climate Scale %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-# Carlos Rodriguez, PhD. CU Anschutz Dept. of Family Medicine
-#
-# Description:
-# This function calculates the average implementation climate scale score for 
-# each participant in the PATHWEIGH practice member survey data. Additionally,
-# this function will rename the implementation climate scale columns by adding
-# an "ic_" prefix to facilitate select(starts_with())
-#
-# All 6 implementation climate scale questions are scored from 1:5, where 1 ==
-# not at all and 5 == to a great extent.
-# 
-# Inputs: pre-processed redcap data download
-# Output: returns a data frame with the average placed immediately after the set
-# of 6 implementation climate scale items.
-# %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+#' Score Implementation Climate Scale
+#'
+#' @param df A data frame containing 6 numeric columns and an identifier column.
+#' 
+#' @param id A character vector specifying the name of the identifier column.
+#'
+#' @return A data frame with average scores
+#' @export
+#'
+#' @examples
+#' data %>%
+#'  select(record_id, expect_certain_number:appreciation) %>%
+#'  score_ic_scale(., "record_id")
 
-score_ic_scale <- function(temp){
-  
-  # Set the implementation climate items as named in the redcap download
-  ic_scale_items <- c("provide_wls",     
-                      "help_wls",        
-                      "support_to_id",   
-                      "support_to_asst", 
-                      "recognition",     
-                      "appreciation")
-  
-  # Test to ensure that all items are in the data set
-  if(sum(names(temp) %in% ic_scale_items) == length(ic_scale_items)){
-    
-    # Calculate the average of the implementation climate scale items
-    temp %<>%
-      mutate(AvgImplScale = rowMeans(select(., all_of(ic_scale_items))))
-    
-    # Reorder the columns, to place the ic_scale_mean after the ic scale items
-    # index all positions from 1 through position of ic item 1 - 1, 
-    # then select all ic items, the avg ic scale, 
-    # finally place the remaining columns
-    temp %<>%
-      select(1:(grep(ic_scale_items[1], names(temp))[1] - 1),
-             all_of(ic_scale_items), 
-             AvgImplScale, 
-             everything())
-    
-    # Add a prefix to the first six implementation climate scale items.
-    # First identify the numeric indexes of the columns that match the 
-    # ic scale items by name, then use the first 6 indexes to prevent renaming
-    # the columns that end in the .factor suffix.
-    names(temp)[grep(
-      str_c(ic_scale_items, collapse = "|"), colnames(temp)
-      )[1:6]] <- str_c("ic_", names(temp[ic_scale_items]))
-    
-    # Could modify the factored columns here, but would also need to modify
-    # the all_labels dataset as well.
-    
-    # Return the data frame as output
-    return(temp)
-    
-    } else {
-      stop("The implementation climate scale items, were not found in the input data frame. Consider reviewing data processing pipeline.")
-    }
+score_ic_scale <- function(df, id) {
+  # Set the names of all columns
+  all_cols <- names(df)
+
+  # Set the names of the columns corresponding to the assessment items
+  ic_scale_items <- all_cols[!all_cols %in% id]
+
+  # Check if the number of assessment columns is equal to 22
+  n_cols <- df %>%
+    select(all_of(ic_scale_items)) %>%
+    length()
+
+  if (n_cols != 6) {
+    stop("Number of scorable columns is not 6. Review input")
+  }
+
+  # Check if all assessment columns are numeric
+  all_numeric <- df %>%
+    select(all_of(ic_scale_items)) %>%
+    summarise(all_numeric = all(map_lgl(., is.numeric))) %>%
+    pull()
+
+  if (!all_numeric) {
+    stop("Scorable columns in input data frame are not numeric. Check input column types.")
+  }
+
+  # Calculate the average of the implementation climate scale items
+  df <- df %>%
+    mutate(AvgImplScale = rowMeans(select(., all_of(ic_scale_items))))
+     
+  df <- df %>%
+    select(-all_of(ic_scale_items))
+
+  return(df)
+
 }
