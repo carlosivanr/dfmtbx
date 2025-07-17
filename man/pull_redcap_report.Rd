@@ -29,7 +29,8 @@ a dataframe
 }
 \description{
 Pulls a report from a RedCap project given a project token, report id, and a
-value type.
+value type. Requires a pre-defined set of fields specified in a RedCap
+project and API access to the RedCap project.
 }
 \examples{
 # Basic example usage
