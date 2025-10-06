@@ -3,7 +3,7 @@ Title: Tools for DFM data analysis
 Version: 0.2.0
 Authors@R: 
     person("Carlos", "Rodriguez", , "carlos.i.rodriguez@cuanschutz.edu", role = c("aut", "cre"))
-Description: A collection of custom written R functions and utilities for working with research data.
+Description: A collection of hand-crafted R functions and utilities for working with DFM research data.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
