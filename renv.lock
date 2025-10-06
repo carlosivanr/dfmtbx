@@ -434,17 +434,6 @@
       ],
       "Hash": "158d36283dd26ca74066e6c09226a72f"
     },
-    "glue": {
-      "Package": "glue",
-      "Version": "1.8.0",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R",
-        "methods"
-      ],
-      "Hash": "5899f1eaa825580172bb56c08266f37c"
-    },
     "gtable": {
       "Package": "gtable",
       "Version": "0.3.6",
@@ -481,17 +470,6 @@
         "vctrs"
       ],
       "Hash": "437bc7804f8ffdfcfed38d0aead6a9d7"
-    },
-    "highr": {
-      "Package": "highr",
-      "Version": "0.11",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R",
-        "xfun"
-      ],
-      "Hash": "d65ba49117ca223614f71b60d85b8ab7"
     },
     "hms": {
       "Package": "hms",
@@ -630,19 +608,6 @@
         "utils"
       ],
       "Hash": "cc5ac1ba4c238c7ca9fa6a87ca11a7e2"
-    },
-    "lifecycle": {
-      "Package": "lifecycle",
-      "Version": "1.0.4",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R",
-        "cli",
-        "glue",
-        "rlang"
-      ],
-      "Hash": "b8552d117e1b808b09a832f589b79035"
     },
     "magrittr": {
       "Package": "magrittr",
@@ -1088,13 +1053,6 @@
         "tools"
       ],
       "Hash": "652ce36fe7d57688e6786819b09d9190"
-    },
-    "yaml": {
-      "Package": "yaml",
-      "Version": "2.3.10",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "51dab85c6c98e50a18d7551e9d49f76c"
     }
   }
 }

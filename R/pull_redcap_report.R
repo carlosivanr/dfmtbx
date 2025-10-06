@@ -2,7 +2,7 @@
 #'
 #' Pulls a report from a RedCap project given a project token, report id, and a
 #' value type. Requires a pre-defined set of fields specified in a RedCap
-#' project and API access to the RedCap project.
+#' project report and API access to the RedCap project.
 #'
 #' @param token A RedCap API token as a string corresponding to the RedCap 
 #'  project of interest. The token can be saved as an environmental variable
@@ -20,12 +20,12 @@
 #' @return a dataframe
 #' @examples
 #' # Basic example usage
-#' data <- pull_redcap_report(Sys.getenv("LC_patient"), "81729739", "label")
+#' data <- pull_redcap_report(Sys.getenv("LC_patient"), "81729739", "label", "raw", "true")
 #'  where "LC_patient" is a Windows environmental variable containing the 
 #'  RedCap project API token.
 #' 
 #' @export
-pull_redcap_report <- function(token, report_id, value_type, header_type) {
+pull_redcap_report <- function(token, report_id, value_type, header_type, t_stamps) {
   .token <- token
 
   url <- "https://redcap.ucdenver.edu/api/"
@@ -37,8 +37,9 @@ pull_redcap_report <- function(token, report_id, value_type, header_type) {
     report_id = report_id, 
     csvDelimiter = "", 
     rawOrLabel = value_type,
-    rawOrLabelHeaders = header_type, 
+    rawOrLabelHeaders = header_type,     
     exportCheckboxLabel = "false",
+    exportSurveyFields = t_stamps,
     returnFormat = "csv")
   
   response <- httr::POST(url, body = formData, encode = "form")
