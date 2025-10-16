@@ -17,10 +17,12 @@
 #' @param header_type Options are "label" or "raw". "raw" pulls the field names
 #'  as found in the RedCap project, while "label" pulls the questions that 
 #'  correspond to the field eg. "Rate on a scale of 1-10 your level of pain."
+#' @param t_stamps Options are "true" or "false". "true" pulls the time stamps
+#' for variables that indicate a given form is complete.
 #' @return a dataframe
 #' @examples
 #' # Basic example usage
-#' data <- pull_redcap_report(Sys.getenv("LC_patient"), "81729739", "label", "raw", "true")
+#' data <- pull_redcap_report(Sys.getenv("LC_patient"), "81729739", "label", "raw", "true", "false")
 #'  where "LC_patient" is a Windows environmental variable containing the 
 #'  RedCap project API token.
 #' 
