@@ -4,7 +4,7 @@
 \alias{pull_redcap_report}
 \title{pull_redcap_report}
 \usage{
-pull_redcap_report(token, report_id, value_type, header_type)
+pull_redcap_report(token, report_id, value_type, header_type, t_stamps)
 }
 \arguments{
 \item{token}{A RedCap API token as a string corresponding to the RedCap
@@ -23,6 +23,9 @@ apply. "raw" returns numeric values such as 5,}
 \item{header_type}{Options are "label" or "raw". "raw" pulls the field names
 as found in the RedCap project, while "label" pulls the questions that
 correspond to the field eg. "Rate on a scale of 1-10 your level of pain."}
+
+\item{t_stamps}{Options are "true" or "false". "true" pulls the time stamps
+for variables that indicate a given form is complete.}
 }
 \value{
 a dataframe
@@ -30,11 +33,11 @@ a dataframe
 \description{
 Pulls a report from a RedCap project given a project token, report id, and a
 value type. Requires a pre-defined set of fields specified in a RedCap
-project and API access to the RedCap project.
+project report and API access to the RedCap project.
 }
 \examples{
 # Basic example usage
-data <- pull_redcap_report(Sys.getenv("LC_patient"), "81729739", "label")
+data <- pull_redcap_report(Sys.getenv("LC_patient"), "81729739", "label", "raw", "true", "false")
  where "LC_patient" is a Windows environmental variable containing the 
  RedCap project API token.
 
