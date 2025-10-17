@@ -12,7 +12,6 @@
 #' @param test_type A string of either "paired" or "two.sample"
 #' @return A data frame of detectable effect sizes given power = 80%.
 #' @export
-#' 
 get_fx_sz_tbl <- function(alphas, sample_sizes, ratios, std, test_type) {
   # Validate inputs
   stopifnot(
