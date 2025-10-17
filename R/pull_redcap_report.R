@@ -6,7 +6,7 @@
 #'
 #' @param token A RedCap API token as a string corresponding to the RedCap 
 #'  project of interest. The token can be saved as an environmental variable
-#'  in Windows and retrieved via Sys.getenv("[environmental variable name]") to
+#'  in Windows and retrieved via Sys.getenv("environmental variable name") to
 #'  prevent uploading the token to GitHub.
 #' @param report_id A numeric report id as a string that corresponds to a given
 #'  report in the RedCap project of interest

@@ -9,7 +9,7 @@ pull_redcap_report(token, report_id, value_type, header_type, t_stamps)
 \arguments{
 \item{token}{A RedCap API token as a string corresponding to the RedCap
 project of interest. The token can be saved as an environmental variable
-in Windows and retrieved via Sys.getenv("\link{environmental variable name}") to
+in Windows and retrieved via Sys.getenv("environmental variable name") to
 prevent uploading the token to GitHub.}
 
 \item{report_id}{A numeric report id as a string that corresponds to a given

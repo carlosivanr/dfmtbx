@@ -1,6 +1,6 @@
 Package: dfmtbx
 Title: Tools for DFM data analysis
-Version: 0.2.0
+Version: 0.2.1
 Authors@R: 
     person("Carlos", "Rodriguez", , "carlos.i.rodriguez@cuanschutz.edu", role = c("aut", "cre"))
 Description: A collection of hand-crafted R functions and utilities for working with DFM research data.
